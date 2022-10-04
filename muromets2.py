@@ -1,4 +1,5 @@
 import os
+import random
 
 name = input("как зовут персонажа? ")
 if name == "": name = "илья муромец"
@@ -48,11 +49,34 @@ while game:
         print("Поеду-ка я по той дорожке, где убитому быть. Умру в чистом поле, как славный богатырь!")
         print("И поехал он по дороге, где убитому быть.")
         print("Только он отъехал три версты, напали на него сорок разбойников.")
-        print("Ну и я начал драться против разбойников и всех победил!")
-        print("хорошая концовка")
-        way_1 = False
-        key = ""
-        input("ENTER - дальше")
+
+
+    health_user_choice = 100
+    razboinik_health = 100
+
+    while health_user_choice > 0 and razboinik_health > 0:
+            os.system("cls")
+            user_damage = random.randint(1, 10)
+            razboinik_health - user_damage
+            razboinik_health -= user_damage
+            print("игрок ударил разбойника на", user_damage)
+            print("У разбойника осталось", razboinik_health)
+
+            razboinik_damage = random.randint(1, 10)
+            health_user_choice - razboinik_damage
+            health_user_choice -= razboinik_damage
+            print("разбойник ударил игрока на", razboinik_damage)
+            print("у игрока осталось", health_user_choice)
+
+
+
+    input("нажмите Enter чтобы сделать ход ")
+
+    input("нажмите Enter чтобы сделать ход ")
+    print("хорошая концовка")
+    way_1 = False
+    key = ""
+    input("ENTER - дальше")
 
     # РАЗБОЙНИКИ - ПЛОХОЙ ВАРИАНТ
     if key == "12" and way_1:
@@ -89,16 +113,17 @@ while game:
 
     if key == "3" and way_3:
         os.system("cls")     
-        print("дорога 3")
-        print("вариант 1")
-        print("вариант 2")
+        print("я приехал в богатый дом к своей новой жене,но я увидел стрелку на дереве,которая вела в лес.Куда поехать?")
+        print("в дом")
+        print("в лес")
         user_choice = input("какой вариант?Выбирай,1 дорога или 2 дорога")
         if user_choice == "1" or user_choice == "2":
             key += user_choice
 
     if key == "31" and way_3:
         os.system("cls")
-        print("1 вариант хороший выбор")
+        print("я решил не ехать в лес,вдруг там опасно!")
+        print("")
         way_3 = False
         key = ""
         input("ENTER - дальше")    
