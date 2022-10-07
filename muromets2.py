@@ -32,7 +32,6 @@ while game:
         if user_choice == "3" and way_3:
             key += user_choice
 
-        
     # РАЗБОЙНИКИ
     if key == "1" and way_1:
         os.system("cls")
@@ -51,32 +50,34 @@ while game:
         print("Только он отъехал три версты, напали на него сорок разбойников.")
 
 
-    health_user_choice = 100
-    razboinik_health = 100
+        health_user_choice = 100
+        razboinik_health = 100
 
-    while health_user_choice > 0 and razboinik_health > 0:
-            os.system("cls")
-            user_damage = random.randint(1, 10)
-            razboinik_health - user_damage
-            razboinik_health -= user_damage
-            print("игрок ударил разбойника на", user_damage)
-            print("У разбойника осталось", razboinik_health)
+        while health_user_choice > 0 and razboinik_health > 0:
+                os.system("cls")
+                user_damage = random.randint(1, 10)
+                razboinik_health -= user_damage
+                print("игрок ударил разбойника на", user_damage)
+                print("У разбойника осталось", razboinik_health)
 
-            razboinik_damage = random.randint(1, 10)
-            health_user_choice - razboinik_damage
-            health_user_choice -= razboinik_damage
-            print("разбойник ударил игрока на", razboinik_damage)
-            print("у игрока осталось", health_user_choice)
+                razboinik_damage = random.randint(1, 10)
+                health_user_choice -= razboinik_damage
+                print("разбойник ударил игрока на", razboinik_damage)
+                print("у игрока осталось", health_user_choice)
+
+                input("нажмите Enter чтобы сделать ход ")
 
 
+                if health_user_choice > razboinik_health:
+                    way_1 = False
+                    key = ""
+                    print("вы убили разбойнка")
+                    print("хорошая концовка")
+                elif razboinik_health > health_user_choice:
+                    print("плохая концовка")
+                    game = False
 
-    input("нажмите Enter чтобы сделать ход ")
-
-    input("нажмите Enter чтобы сделать ход ")
-    print("хорошая концовка")
-    way_1 = False
-    key = ""
-    input("ENTER - дальше")
+        input("ENTER - дальше")
 
     # РАЗБОЙНИКИ - ПЛОХОЙ ВАРИАНТ
     if key == "12" and way_1:
@@ -84,8 +85,8 @@ while game:
         print("Я решил поехать в другую сторону,а именно в лес,но я не увидел обрыв и упал")
         print("вы вышли на плохую концовку ):")
         game = False
-        
-    
+
+
     if key == "2" and way_2:
         os.system("cls")
         print("я приехал к груде золота,которая лежала рядом со мной,но я могу поехать в загадочный тоннель")
@@ -104,41 +105,37 @@ while game:
         key = ""
         input("ENTER - дальше")
 
-    if key == "22":      
+    if key == "22":
         os.system("cls")
         print("я зашел в тоннель,и увидел белую дыру,я дошёл туда,мне резко стало плохо,и я умер")
         print("Вы вышли на плохую концовку ):")
         game = False
-        key = ""        
+        key = ""
 
     if key == "3" and way_3:
-        os.system("cls")     
-        print("я приехал в богатый дом к своей новой жене,но я увидел стрелку на дереве,которая вела в лес.Куда поехать?")
-        print("в дом")
-        print("в лес")
-        user_choice = input("какой вариант?Выбирай,1 дорога или 2 дорога")
-        if user_choice == "1" or user_choice == "2":
-            key += user_choice
-
-    if key == "31" and way_3:
         os.system("cls")
-        print("я решил не ехать в лес,вдруг там опасно!")
-        print("")
-        way_3 = False
-        key = ""
-        input("ENTER - дальше")    
-    if key == "32":
-        os.system("cls")
-        print("2 вариант-плохой выбор")
-        game = False
 
+        secret = random.randint(1, 100)
+        print("Княжна загадала число от 1 до 100,угадай его")
 
-
+        attempts = 7
+        while attempts:
+            print(f"у тебя {attempts} попыток")
+            user_choice =int(input("введите число"))
+            if user_choice == secret:
+                print("угадал!")
+                key = ""
+                way_3 = False
+                break
+                input("ENTER - дальше")
+            elif user_choice > secret:
+                print("многовато!")
+                attempts -= 1
+            else:
+                print("маловато")
+                attempts -= 1
+        else:
+            print("Попытки кончились! Проиграл")
+            game = False
 
 print("game end")         
-          
-
-
-
-
-
